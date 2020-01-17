@@ -11,8 +11,8 @@ Constants.PLUGIN_MIN_WIDTH = 320
 Constants.PLUGIN_MAX_WIDTH = 600
 Constants.TOOLBAR_ICON = "rbxassetid://0"
 Constants.MAIN_ICON = "rbxassetid://0"
-Constants.PLUGIN_PRODUCT_ID = 3585926833
-Constants.PLUGIN_VERSION = "0.0.6"
+Constants.PLUGIN_PRODUCT_ID = 0
+Constants.PLUGIN_VERSION = "0.0.0"
 
 -- Fields
 Constants.DEFAULT_LABEL_WIDTH = 80
