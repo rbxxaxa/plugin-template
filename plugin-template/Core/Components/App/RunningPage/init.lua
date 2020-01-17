@@ -50,7 +50,7 @@ function RunningPage:render()
 							end
 						},
 						{
-							Draw = self.state.currentTab == "Test" and Roact.createElement(Test)
+							Test = self.state.currentTab == "Test" and Roact.createElement(Test)
 						}
 					)
 				}

@@ -329,41 +329,6 @@ function MainTheme:_recalculateTheme()
 			},
 			shaderColor = isDark and Color3.new(0, 0, 0) or Color3.new(1, 1, 1),
 			-- Plugin-exclusive stuff go here.
-			presetEntry = {
-				textColorEnabled = mainTextColor,
-				textColorDisabled = disabledTextColor,
-				borderColor = {
-					Default = buttonBorderDefaultColor,
-					PressedInside = buttonBorderDefaultColor,
-					PressedOutside = buttonBorderDefaultColor,
-					Hovered = buttonBorderDefaultColor,
-					Selected = buttonBorderDefaultColor,
-					SelectedHovered = buttonBorderDefaultColor,
-					SelectedPressedInside = buttonBorderDefaultColor,
-					SelectedPressedOutside = buttonBorderDefaultColor
-				},
-				backgroundColor = {
-					Default = buttonDefaultColor,
-					PressedInside = buttonPressedColor,
-					PressedOutside = buttonHoverColor,
-					Hovered = buttonHoverColor,
-					Selected = accentColor,
-					SelectedHovered = accentColor:lerp(buttonDefaultColor, 0.3),
-					SelectedPressedInside = accentColor:lerp(buttonDefaultColor, 0.6),
-					SelectedPressedOutside = accentColor:lerp(buttonDefaultColor, 0.3)
-				},
-				dotColor = {
-					Default = Color3.new(1, 1, 1),
-					Hovered = accentColor
-				}
-			},
-			filterBox = {
-				clearButtonDefault = mainTextColor,
-				clearButtonHovered = accentColor
-			},
-			preview = {
-				panelColor = foregroundColor
-			}
 		}
 	)
 end

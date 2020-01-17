@@ -7,12 +7,12 @@ local Components = Plugin.Core.Components
 local Foundation = Components.Foundation
 local ScrollingVerticalList = require(Foundation.ScrollingVerticalList)
 
-local Draw = Roact.PureComponent:extend("Test")
-function Draw:init()
+local Test = Roact.PureComponent:extend("Test")
+function Test:init()
 	self.state = {}
 end
 
-function Draw:render()
+function Test:render()
 	return Roact.createElement(
 		"Frame",
 		{
@@ -33,4 +33,4 @@ function Draw:render()
 	)
 end
 
-return Draw
+return Test
