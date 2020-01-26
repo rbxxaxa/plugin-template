@@ -13,9 +13,9 @@ local Components = Plugin.Core.Components
 local Foundation = Components.Foundation
 local TabbedMenu = require(Foundation.TabbedMenu)
 local Test = require(script.Test)
-local RunningPage = Roact.PureComponent:extend("RunningPage")
+local RunningView = Roact.PureComponent:extend("RunningView")
 
-function RunningPage:init()
+function RunningView:init()
 	self:setState(
 		{
 			currentTab = "Test"
@@ -23,7 +23,7 @@ function RunningPage:init()
 	)
 end
 
-function RunningPage:render()
+function RunningView:render()
 	return withTheme(
 		function(theme)
 			local page =
@@ -61,4 +61,4 @@ function RunningPage:render()
 	)
 end
 
-return RunningPage
+return RunningView

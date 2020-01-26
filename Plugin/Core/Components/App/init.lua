@@ -9,7 +9,7 @@ local ContextGetter = require(Plugin.Core.Util.ContextGetter)
 local getMainManager = ContextGetter.getMainManager
 
 local App = Roact.PureComponent:extend("App")
-local RunningPage = require(script.RunningPage)
+local RunningView = require(script.RunningView)
 
 function App:init(props)
 	self.state = {
@@ -48,7 +48,7 @@ function App:didMount()
 end
 
 function App:render()
-	return Roact.createElement(RunningPage)
+	return Roact.createElement(RunningView)
 end
 
 function App:didMount()
