@@ -8,28 +8,21 @@ local ContextHelper = require(Plugin.Core.Util.ContextHelper)
 
 local withTheme = ContextHelper.withTheme
 
-local Components = Plugin.Core.Components
-local Foundation = Components.Foundation
-local AutoHeightText = require(Foundation.AutoHeightText)
+local ThemedText = Roact.PureComponent:extend("ThemedText")
 
-local AutoHeightThemedText = Roact.PureComponent:extend("AutoHeightThemedText")
-
-AutoHeightThemedText.defaultProps = {
+ThemedText.defaultProps = {
 	width = UDim.new(1, 0),
 	Text = "",
 	Font = Constants.FONT,
 	TextSize = Constants.FONT_SIZE_MEDIUM,
 	textStyle = "Default",
-	PaddingTopPixel = 0,
-	PaddingBottonPixel = 0,
-	PaddingRightPixel = 0,
-	PaddingLeftPixel = 0
+	-- Padding may be added at some pt
 }
 
 -- Children must have a zero Y-Scale size.
-function AutoHeightThemedText:render()
+function ThemedText:render()
 	local props = self.props
-	local width = props.width
+	local Size = props.Size
 	local Text = props.Text
 	local Position = props.Position
 	local Font = props.Font
@@ -38,10 +31,6 @@ function AutoHeightThemedText:render()
 	local textStyle = props.textStyle
 	local LayoutOrder = props.LayoutOrder
 	local ZIndex = props.ZIndex
-	local PaddingTopPixel = props.PaddingTopPixel
-	local PaddingBottomPixel = props.PaddingBottomPixel
-	local PaddingLeftPixel = props.PaddingLeftPixel
-	local PaddingRightPixel = props.PaddingRightPixel
 	local AnchorPoint = props.AnchorPoint
 
 	return withTheme(
@@ -52,9 +41,13 @@ function AutoHeightThemedText:render()
                 textStyle == "Inactive" and theme.disabledTextColor or
 				theme.mainTextColor
 			return Roact.createElement(
-				AutoHeightText,
+				"TextLabel",
 				{
-					width = width,
+					BackgroundTransparency = 1,
+					TextStrokeTransparency = 1,
+					TextScaled = false,
+					
+                    Size = Size,
 					Text = Text,
 					Position = Position,
 					Font = Font,
@@ -63,15 +56,11 @@ function AutoHeightThemedText:render()
 					TextColor3 = TextColor3,
 					LayoutOrder = LayoutOrder,
 					ZIndex = ZIndex,
-					PaddingTopPixel = PaddingTopPixel,
-					PaddingBottomPixel = PaddingBottomPixel,
-					PaddingLeftPixel = PaddingLeftPixel,
-					PaddingRightPixel = PaddingRightPixel,
-					AnchorPoint = AnchorPoint
+					AnchorPoint = AnchorPoint,
 				}
 			)
 		end
 	)
 end
 
-return AutoHeightThemedText
+return ThemedText

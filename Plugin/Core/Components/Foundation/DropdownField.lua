@@ -17,36 +17,24 @@ end
 
 function DropdownField:render()
 	local props = self.props
-	local indentLevel = props.indentLevel
-	local labelWidth = props.labelWidth
 	local label = props.label
 	local LayoutOrder = props.LayoutOrder
 	local entries = props.entries
 	local selectedId = props.selectedId
 	local Visible = props.Visible ~= false
 	local onSelected = props.onSelected
-	local collapsible = props.collapsible
-	local collapsed = props.collapsed
-	local onCollapseToggled = props.onCollapseToggled
 	local enabled = props.enabled
 	local inactive = props.inactive
 	local modalIndex = props.modalIndex
 
-	local boxPadding = Constants.INPUT_FIELD_BOX_PADDING
 	local boxHeight = props.height or Constants.INPUT_FIELD_BOX_HEIGHT
-	local fontSize = Constants.FONT_SIZE_MEDIUM
 
 	return Roact.createElement(
 		LabeledFieldTemplate,
 		{
 			label = label,
-			indentLevel = indentLevel,
-			labelWidth = labelWidth,
 			LayoutOrder = LayoutOrder,
 			Visible = Visible,
-			collapsible = collapsible,
-			collapsed = collapsed,
-			onCollapseToggled = onCollapseToggled,
 			enabled = enabled,
 			height = boxHeight
 		},
@@ -56,11 +44,10 @@ function DropdownField:render()
 				{
 					entries = entries,
 					selectedId = selectedId,
-					Size = UDim2.new(1, -boxPadding, 0, boxHeight),
+					Size = UDim2.new(1, 0, 0, boxHeight),
 					entryHeight = boxHeight,
-					Position = UDim2.new(0, boxPadding, 0.5, 0),
+					Position = UDim2.new(0, 0, 0.5, 0),
 					AnchorPoint = Vector2.new(0, 0.5),
-					TextSize = fontSize,
 					onSelected = onSelected,
 					enabled = enabled,
 					onOpen = props.onOpen,

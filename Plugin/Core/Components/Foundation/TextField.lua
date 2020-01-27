@@ -17,8 +17,6 @@ end
 
 function TextField:render()
 	local props = self.props
-	local indentLevel = props.indentLevel
-	local labelWidth = props.labelWidth
 	local textInput = props.textInput
 	local label = props.label
 	local LayoutOrder = props.LayoutOrder
@@ -27,13 +25,9 @@ function TextField:render()
 	local textFormatCallback = props.textFormatCallback
 	local newTextValidateCallback = props.newTextValidateCallback
 	local Visible = props.Visible
-	local collapsible = props.collapsible
-	local collapsed = props.collapsed
-	local onCollapseToggled = props.onCollapseToggled
 	local onInputChanged = props.onInputChanged
 	local modalIndex = props.modalIndex
 
-	local boxPadding = Constants.INPUT_FIELD_BOX_PADDING
 	local boxHeight = Constants.INPUT_FIELD_BOX_HEIGHT
 	local fontSize = Constants.FONT_SIZE_MEDIUM
 
@@ -41,21 +35,16 @@ function TextField:render()
 		LabeledFieldTemplate,
 		{
 			label = label,
-			indentLevel = indentLevel,
-			labelWidth = labelWidth,
 			LayoutOrder = LayoutOrder,
 			Visible = Visible,
-			collapsible = collapsible,
-			collapsed = collapsed,
-			onCollapseToggled = onCollapseToggled
 		},
 		{
 			Box = Roact.createElement(
 				ThemedTextBox,
 				{
 					textInput = textInput,
-					Size = UDim2.new(1, -boxPadding, 0, boxHeight),
-					Position = UDim2.new(0, boxPadding, 0.5, 0),
+					Size = UDim2.new(1, 0, 0, boxHeight),
+					Position = UDim2.new(0, 0, 0.5, 0),
 					AnchorPoint = Vector2.new(0, 0.5),
 					TextSize = fontSize,
 					onFocused = onFocused,

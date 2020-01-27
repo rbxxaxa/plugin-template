@@ -8,20 +8,20 @@ local Constants = require(Plugin.Core.Util.Constants)
 local Components = Plugin.Core.Components
 local Foundation = Components.Foundation
 local LabeledFieldTemplate = require(Foundation.LabeledFieldTemplate)
-local ThemedCheckbox = require(Foundation.ThemedCheckbox)
+local ThemedColorSelector = require(Foundation.ThemedColorSelector)
 
-local CheckboxField = Roact.PureComponent:extend("CheckboxField")
+local ColorSelectorField = Roact.PureComponent:extend("ColorSelectorField")
 
-function CheckboxField:init()
+function ColorSelectorField:init()
 end
 
-function CheckboxField:render()
+function ColorSelectorField:render()
 	local props = self.props
+	local color = props.color
 	local label = props.label
-	local checked = props.checked
 	local LayoutOrder = props.LayoutOrder
 	local Visible = props.Visible
-	local onToggle = props.onToggle
+	local onColorChanged = props.onColorChanged
 	local modalIndex = props.modalIndex
 
 	local boxHeight = Constants.INPUT_FIELD_BOX_HEIGHT
@@ -31,17 +31,17 @@ function CheckboxField:render()
 		{
 			label = label,
 			LayoutOrder = LayoutOrder,
-			Visible = Visible
+			Visible = Visible,
 		},
 		{
-			Checkbox = Roact.createElement(
-				ThemedCheckbox,
+			Box = Roact.createElement(
+				ThemedColorSelector,
 				{
-					checked = checked,
-					Size = UDim2.new(0, boxHeight, 0, boxHeight),
+					color = color,
+					Size = UDim2.new(1, 0, 0, boxHeight),
 					Position = UDim2.new(0, 0, 0.5, 0),
 					AnchorPoint = Vector2.new(0, 0.5),
-					onToggle = onToggle,
+					onColorChanged = onColorChanged,
 					modalIndex = modalIndex
 				}
 			)
@@ -49,4 +49,4 @@ function CheckboxField:render()
 	)
 end
 
-return CheckboxField
+return ColorSelectorField
