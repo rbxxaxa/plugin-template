@@ -136,6 +136,7 @@ function ScrollingVerticalList:render()
 							ScrollBarThickness = thickness,
 							ScrollBarImageTransparency = 1,
 							ZIndex = 2,
+							ScrollingDirection = Enum.ScrollingDirection.Y,
 							[Roact.Change.CanvasPosition] = self.onCanvasPositionChanged,
 							[Roact.Change.AbsoluteSize] = self.onAbsoluteSizeChanged,
 							[Roact.Ref] = self.scrollRef
