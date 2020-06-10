@@ -6,16 +6,9 @@ local Types = require(Plugin.Core.Util.Types)
 
 local Constants = {}
 
-Constants.DEBUG_LABEL = "PluginTemplate"
 Constants.PLUGIN_MIN_WIDTH = 320
 Constants.PLUGIN_MAX_WIDTH = 600
 Constants.TOOLBAR_ICON = "rbxassetid://0"
-Constants.MAIN_ICON = "rbxassetid://0"
-Constants.PLUGIN_PRODUCT_ID = 0
-Constants.PLUGIN_VERSION = "0.0.0"
-
--- Fields
-Constants.DEFAULT_LABEL_WIDTH = 80
 
 -- Font
 Constants.FONT = Enum.Font.SourceSans

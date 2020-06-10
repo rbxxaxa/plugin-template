@@ -68,53 +68,6 @@ function MainManager:IsActive()
 	return self.mode ~= "None"
 end
 
-function MainManager:IsUpdateAvailable()
-	local cachedUpdate = self.cachedUpdate
-	if cachedUpdate == nil then
-		local pid = Constants.PLUGIN_PRODUCT_ID
-		local ok, _ =
-			pcall(
-			function()
-				local pInfo = MarketplaceService:GetProductInfo(pid)
-				local desc = pInfo.Description
-				-- Description is empty. Maybe we got cd'ed?
-				if not desc then
-					warn(string.format("[%s] Can't retrieve plugin version. A new update may be available.", Constants.DEBUG_LABEL))
-					cachedUpdate = false
-					return
-				else
-					local semverMatch = desc:match("semver ([0-9]+%.[0-9]+%.[0-9]+)")
-					if semverMatch then
-						local websitePluginVersion = semver(semverMatch)
-						local thisPluginVersion = semver(Constants.PLUGIN_VERSION)
-						if thisPluginVersion < websitePluginVersion then
-							cachedUpdate = true
-							return
-						else
-							cachedUpdate = false
-							return
-						end
-					else
-						-- Typo, maybe? Accidentally cleared?
-						warn(string.format("[%s] Can't retrieve plugin version. A new update may be available.", Constants.DEBUG_LABEL))
-						cachedUpdate = false
-						return
-					end
-				end
-			end
-		)
-
-		if not ok then
-			warn(string.format("[%s] Can't retrieve plugin version. A new update may be available.", Constants.DEBUG_LABEL))
-			cachedUpdate = false
-		end
-
-		self.cachedUpdate = cachedUpdate
-	end
-
-	return cachedUpdate
-end
-
 function MainManager:ToggleCollapsibleSection(sectionId)
 	local isCollapsed = self.collapsibleSections[sectionId]
 	if isCollapsed == nil then

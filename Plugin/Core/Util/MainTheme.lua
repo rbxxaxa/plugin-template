@@ -80,7 +80,6 @@ end
 
 function MainTheme:_recalculateTheme()
 	local externalTheme = self:_getExternalTheme()
-	--	print(externalTheme.Name)
 	local isDark = self:_isDarkerTheme()
 
 	-- Shorthands for getting a color
@@ -91,7 +90,6 @@ function MainTheme:_recalculateTheme()
 		return externalTheme:GetColor(...)
 	end
 
-	-- nice
 	local mainTextColor = isDark and Color3.fromRGB(204, 204, 204) or Color3.fromRGB(51, 51, 51)
 	local disabledTextColor = isDark and Color3.fromRGB(133, 133, 133) or Color3.fromRGB(133, 133, 133)
 	local backgroundColor = isDark and Color3.fromRGB(46, 46, 46) or Color3.fromRGB(255, 255, 255)
